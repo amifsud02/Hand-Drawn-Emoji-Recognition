@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Hand Drawn Emoji Recognition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+
+    {{ turbo() }}
+
+  </head>
+  <body>
+    {% block content %}{% endblock %}
+    {% include "loadavg.html" %}
+  </body>
+
+    <script src="{{ url_for('static', filename='canvas.js')}}"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>        
+</html>
