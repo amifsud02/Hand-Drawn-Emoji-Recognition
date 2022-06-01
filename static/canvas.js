@@ -1,6 +1,7 @@
 const canvas = document.getElementById('canvas')
-canvas.width = 400
-canvas.height = 400
+
+canvas.width = 425
+canvas.height = 425
 
 let context = canvas.getContext("2d")
 let default_bg_color = "white"
@@ -21,10 +22,17 @@ canvas.addEventListener("mouseout", stop, false)
 
 function start(event)
 {
+    console.log("Drawing")
+
     is_drawing = true
+
     context.beginPath()
+    console.log(event.clientX, event.clientY) 
+    console.log(canvas.offsetLeft, canvas.offsetTop)
+    
     context.moveTo(event.clientX - canvas.offsetLeft, 
-                   event.clientY - canvas.offsetTop)
+        event.clientY - canvas.offsetTop)
+
     event.preventDefault()
 }
 
@@ -50,10 +58,10 @@ function stop(event)
         context.stroke()
         context.closePath()
         is_drawing = false
-        // Add Save Function
 
         saveImage()
     }
+
     event.preventDefault()
 }
 
@@ -71,15 +79,17 @@ function clear_canvas()
 
 
 function saveImage()
-{
+{    
     var image = new Image()
     var url = document.getElementById('url')
     image.id = "pic"
     image.src = canvas.toDataURL("image/png")
     url.value = image.src
 
+    console.log(url.value)
+
     $.ajax({
-        url:'/',
+        url:'/draw',
         type:'POST',
         contentType: 'application/octet/stream',
         data: url.value.split(',')[1],

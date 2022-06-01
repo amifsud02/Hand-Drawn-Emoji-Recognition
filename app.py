@@ -8,8 +8,7 @@ import tensorflow as tf
 import numpy as np
 from PIL import Image
 
-
-model = tf.keras.models.load_model('HDER_92_ACC.h5')
+model = tf.keras.models.load_model('Models/HDER_92_ACC.h5')
 
 app = Flask(__name__)
 turbo = Turbo(app)
@@ -17,7 +16,8 @@ turbo = Turbo(app)
 @app.context_processor
 def inject_load():
     load = finds()
-    return { 'prediction': load }
+    print("Prediction is:", load)
+    return { 'prediction': load } 
 
 def finds():
     test_datagen = ImageDataGenerator(rescale = 1./255)
@@ -32,8 +32,8 @@ def finds():
             batch_size = 1
             )
     pred = model.predict(test_generator)
-    print("Prediction: ", str(vals[np.argmax(pred)]))
-    print(np.argsort(pred))
+    #print("Prediction: ", str(vals[np.argmax(pred)]))
+    #print(np.argsort(pred))
     return str(vals[np.argmax(pred)])
 
 def getImage(data):
@@ -41,18 +41,29 @@ def getImage(data):
         return False
     else:
         output = data
-        print(type(output))
+        #print(type(output))
         image = base64.decodestring(output)
         imageresult = open('Images/toPredict/user.png', 'wb')
         imageresult.write(image)
 
-@app.route("/", methods=['GET', 'POST'])
+        
+# ===============================================
+
+@app.route("/")
 def home():
+    return render_template('index.html')
+
+@app.route("/draw", methods=['GET', 'POST'])
+def draw():
     data = None
+
     if request.method == 'POST':
         data = request.get_data()
         getImage(data)
-    return render_template('index.html')
+
+    return render_template('draw.html')
+
+# ===============================================
 
 @app.before_first_request
 def before_first_request():
@@ -62,4 +73,4 @@ def update_load():
     with app.app_context():
         while True:
             time.sleep(1)
-            turbo.push(turbo.replace(render_template('loadavg.html'), 'load'))
+            turbo.push(turbo.replace(render_template('loadPred.html'), 'load'))
