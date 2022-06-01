@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
+
+.field{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    width:80vh;
+    margin: auto;
+}
+canvas
+{
+    cursor: url('pencil.cur') , auto;
+    margin-top: 10%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.tools .color-field
+{
+    height: 40px;
+    width: 40px;
+    min-height: 40px;
+    min-width: 40px;
+    cursor: pointer;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+.tools
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    background-color: white;
+    padding: 25px;
+    margin: 5px;
+    border-radius: 8px;
+}
+
+.tools .button
+{
+    align-self: center;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    color: black;
+    background-color: var(--dl-color-primary-700);
+    border: 2px solid white;
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+.color-picker
+{
+    align-self: center;
+    margin: 0 15px;
+    height: 50px;
+}
+
+.pen-range
+{
+    align-self: center;
+    margin: 0 10px;
+}
+
