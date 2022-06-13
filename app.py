@@ -31,7 +31,9 @@ def finds():
             class_mode = 'categorical',
             batch_size = 1
             )
+            
     pred = model.predict(test_generator)
+    print(pred)
     #print("Prediction: ", str(vals[np.argmax(pred)]))
     #print(np.argsort(pred))
     return str(vals[np.argmax(pred)])
