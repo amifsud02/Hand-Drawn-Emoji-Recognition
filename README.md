@@ -60,8 +60,8 @@ To get a local copy up and running, follow these simple steps.
 
 ## Contact
 
-Anthony Mifsud - [Linkedin](linkedin.com/in/anthony-mifsud-a525711ba) - amifsud02@gmail.com
+Anthony Mifsud - [Linkedin](https://www.linkedin.com/in/anthony-mifsud-a525711ba/) - amifsud02@gmail.com
 
-Project Link: [https://github.com/amifsud02/Hand-Drawn-Emoji-Recognition](https://github.com/amifsud02/Hand-Drawn-Emoji-Recognition)
+Project Link: [HDER - IAPT 2021/22](https://github.com/amifsud02/Hand-Drawn-Emoji-Recognition)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
